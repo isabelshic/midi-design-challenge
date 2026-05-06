@@ -9,7 +9,9 @@ A React + TypeScript app powered by Vite.
 
 ## Hosted version
 
-```digitalocean.com```
+```bash
+digitalocean.com
+```
 
 ## Run locally
 
