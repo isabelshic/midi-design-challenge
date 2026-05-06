@@ -7,6 +7,10 @@ A React + TypeScript app powered by Vite.
 - Node.js 20+ (or current LTS)
 - npm
 
+## Hosted version
+
+digitalocean.com
+
 ## Run locally
 
 1. Install dependencies:
