@@ -27,5 +27,23 @@ npm run dev
 
 - `npm run dev` - Start Vite in development mode with hot reload.
 - `npm run build` - Type-check and create a production build.
+- `npm run start` - Run a production preview server (binds to `PORT` for hosts like DigitalOcean).
 - `npm run preview` - Preview the production build locally.
 - `npm run lint` - Run ESLint across the project.
+
+## Deploy to DigitalOcean App Platform
+
+Recommended: create a **Static Site** app.
+
+- Source: this repository
+- Build command: `npm run build`
+- Output directory: `dist`
+- Environment variables: any client-exposed vars must be prefixed with `VITE_`
+- SPA fallback: add a rewrite rule from `/*` to `/index.html` (status 200) if using client-side routing
+
+If you accidentally create a **Web Service**, set:
+
+- Build command: `npm run build`
+- Run command: `npm run start`
+
+This repo includes `npm run start` so the Web Service path does not fail with "determine start command".
