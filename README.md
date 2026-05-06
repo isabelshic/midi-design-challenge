@@ -10,7 +10,7 @@ A React + TypeScript app powered by Vite.
 ## Hosted version
 
 ```bash
-digitalocean.com
+https://midi-design-challenge-avgpa.ondigitalocean.app/
 ```
 
 ## Run locally
