@@ -159,7 +159,7 @@ function App() {
                         ? `${state.label} (Tab into any button here to preview focus styles.)`
                         : state.label}
                     </p>
-                    <div className="rounded-[20px] bg-white p-4">
+                    <div className="rounded-[12px] bg-white p-4">
                       <div className="overflow-x-auto">
                         <div className="inline-flex min-w-max flex-nowrap items-start justify-start gap-4">
                           {sizes.map((size) => (
@@ -216,7 +216,7 @@ function App() {
               <p className="pb-[6px] text-[10px] font-medium uppercase tracking-wide text-slate-500">
                 States (Tab into a pill to preview focus styles.)
               </p>
-              <div className="rounded-[20px] bg-white p-4">
+              <div className="rounded-[12px] bg-white p-4">
                 <div className="inline-flex flex-wrap items-center gap-3">
                   {pillStates.map((state) => (
                     <div key={state.key} className="space-y-2 text-left">
@@ -238,7 +238,7 @@ function App() {
               <p className="pb-[6px] text-[10px] font-medium uppercase tracking-wide text-slate-500">
                 Interactive example
               </p>
-              <div className="rounded-[20px] bg-white p-4">
+              <div className="rounded-[12px] bg-white p-4">
                 <div className="inline-flex flex-wrap items-center gap-2">
                   {symptomOptions.map((symptom) => (
                     <SelectablePill

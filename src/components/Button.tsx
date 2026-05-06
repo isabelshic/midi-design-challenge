@@ -28,6 +28,17 @@ export function Button({
   ...props
 }: ButtonProps) {
   const t = tokenValue
+  const iconSlotClasses =
+    'shrink-0 size-[20px] inline-flex items-center justify-center'
+  const sharedInsetRingClasses =
+    'before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none'
+  const sharedInsetRingShadowClasses =
+    'before:shadow-[inset_0px_0px_0px_1px_var(--button-shadow-inner-border),inset_0px_-2px_0px_0px_var(--button-shadow-inner)]'
+  const sharedFocusRingClasses =
+    'focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_2px_var(--button-surface),0px_0px_0px_4px_var(--button-focus-ring)]'
+  const sharedLinkClasses =
+    'text-[var(--button-secondary-text)] bg-transparent shadow-none border-0'
+  const sharedDisabledTextClasses = 'disabled:text-[var(--button-disabled-fg)]'
 
   const base =
     'inline-flex items-center justify-center overflow-hidden relative rounded-[6px] font-semibold whitespace-nowrap transition-colors disabled:pointer-events-none'
@@ -50,9 +61,9 @@ export function Button({
     'text-[var(--button-text-on-brand)]',
     'bg-[var(--button-primary-default)] hover:bg-[var(--button-primary-hover)] focus-visible:bg-[var(--button-primary-focus)]',
     'shadow-[0px_1px_2px_0px_var(--button-shadow-xs)]',
-    'before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none',
-    'before:shadow-[inset_0px_0px_0px_1px_var(--button-shadow-inner-border),inset_0px_-2px_0px_0px_var(--button-shadow-inner)]',
-    'focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_2px_var(--button-surface),0px_0px_0px_4px_var(--button-focus-ring)]',
+    sharedInsetRingClasses,
+    sharedInsetRingShadowClasses,
+    sharedFocusRingClasses,
     'disabled:bg-[var(--button-disabled-bg)] disabled:text-[var(--button-disabled-fg)] disabled:border disabled:border-[var(--button-disabled-border)] disabled:shadow-[0px_1px_2px_0px_var(--button-shadow-xs)] disabled:before:content-none',
   )
 
@@ -61,17 +72,17 @@ export function Button({
     'bg-[var(--button-surface)] border border-[var(--button-secondary-border)]',
     'hover:bg-[var(--button-secondary-hover-bg)] hover:text-[var(--button-secondary-hover-text)]',
     'shadow-[0px_1px_2px_0px_var(--button-shadow-xs)]',
-    'before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none',
-    'before:shadow-[inset_0px_0px_0px_1px_var(--button-shadow-inner-border),inset_0px_-2px_0px_0px_var(--button-shadow-inner)]',
-    'focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_2px_var(--button-surface),0px_0px_0px_4px_var(--button-focus-ring)]',
+    sharedInsetRingClasses,
+    sharedInsetRingShadowClasses,
+    sharedFocusRingClasses,
     'disabled:text-[var(--button-disabled-fg)] disabled:border-[var(--button-disabled-border)] disabled:shadow-none disabled:before:content-none',
   )
 
   const tertiaryClasses = cn(
     'text-[var(--button-secondary-text)] bg-transparent',
     'hover:bg-[var(--button-secondary-hover-bg)] hover:text-[var(--button-secondary-hover-text)]',
-    'focus-visible:bg-[var(--button-surface)] focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_2px_var(--button-surface),0px_0px_0px_4px_var(--button-focus-ring)]',
-    'disabled:text-[var(--button-disabled-fg)]',
+    `focus-visible:bg-[var(--button-surface)] ${sharedFocusRingClasses}`,
+    sharedDisabledTextClasses,
   )
 
   const secondaryOnBrandClasses = cn(
@@ -79,24 +90,24 @@ export function Button({
     'bg-[var(--button-secondary-on-brand-bg)] border border-[var(--button-secondary-on-brand-border)]',
     'hover:bg-[var(--button-secondary-on-brand-hover-bg)]',
     'shadow-[0px_1px_2px_0px_var(--button-shadow-xs)]',
-    'before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none',
-    'before:shadow-[inset_0px_0px_0px_1px_var(--button-shadow-inner-border),inset_0px_-2px_0px_0px_var(--button-shadow-inner)]',
+    sharedInsetRingClasses,
+    sharedInsetRingShadowClasses,
     'focus-visible:outline-none focus-visible:border-[var(--button-secondary-on-brand-focus-border)] focus-visible:shadow-[0px_1px_2px_0px_var(--button-shadow-xs),0px_0px_0px_2px_var(--button-focus-ring)]',
     'disabled:bg-[var(--button-disabled-bg)] disabled:text-[var(--button-disabled-fg)] disabled:border-[var(--button-secondary-on-brand-disabled-border)] disabled:shadow-none disabled:before:content-none',
   )
 
   const linkColorClasses = cn(
-    'text-[var(--button-secondary-text)] bg-transparent shadow-none border-0',
+    sharedLinkClasses,
     'hover:text-[var(--button-secondary-hover-text)] hover:underline',
-    'focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_2px_var(--button-surface),0px_0px_0px_4px_var(--button-focus-ring)]',
-    'disabled:text-[var(--button-disabled-fg)]',
+    sharedFocusRingClasses,
+    sharedDisabledTextClasses,
   )
 
   const linkGrayClasses = cn(
-    'text-[var(--button-secondary-text)] bg-transparent shadow-none border-0',
+    sharedLinkClasses,
     'hover:text-[var(--button-link-gray-hover-text)] hover:underline',
-    'focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_2px_var(--button-surface),0px_0px_0px_4px_var(--button-focus-ring)]',
-    'disabled:text-[var(--button-disabled-fg)]',
+    sharedFocusRingClasses,
+    sharedDisabledTextClasses,
   )
 
   const variantClasses = {
@@ -180,7 +191,7 @@ export function Button({
     >
       {isLoading ? (
         <>
-          <span className="shrink-0 size-[20px] inline-flex items-center justify-center">
+          <span className={iconSlotClasses}>
             <span className="inline-block size-3 rounded-full border-2 border-[color:inherit] border-r-transparent animate-spin" />
           </span>
           {hasChildren && (
@@ -190,9 +201,7 @@ export function Button({
       ) : (
         <>
           {iconLeading ? (
-            <span className="shrink-0 size-[20px] inline-flex items-center justify-center">
-              {iconLeading}
-            </span>
+            <span className={iconSlotClasses}>{iconLeading}</span>
           ) : null}
           {hasChildren && (
             <span className="px-[2px]">
@@ -200,9 +209,7 @@ export function Button({
             </span>
           )}
           {iconTrailing ? (
-            <span className="shrink-0 size-[20px] inline-flex items-center justify-center">
-              {iconTrailing}
-            </span>
+            <span className={iconSlotClasses}>{iconTrailing}</span>
           ) : null}
         </>
       )}
