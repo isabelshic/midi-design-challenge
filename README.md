@@ -1,3 +1,5 @@
+<img width="1512" height="861" alt="image" src="https://github.com/user-attachments/assets/49b90ef3-5698-4e06-9f43-4bc36418ede1" />
+
 # MIDI Takehome
 
 A React + TypeScript app powered by Vite.
