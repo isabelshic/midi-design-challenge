@@ -181,6 +181,17 @@ function App() {
                                     ? 'Submitting...'
                                     : 'Button CTA'}
                                 </Button>
+                                {state.key !== 'loading' ? (
+                                  <Button
+                                    key={`${variant.key}-${size}-${state.key}-icon-trailing-cta`}
+                                    variant={variant.key}
+                                    size={size}
+                                    iconTrailing={<ChevronRightIcon />}
+                                    {...state.buttonProps}
+                                  >
+                                    Button CTA
+                                  </Button>
+                                ) : null}
                                 <Button
                                   key={`${variant.key}-${size}-${state.key}-icon-only`}
                                   variant={variant.key}
