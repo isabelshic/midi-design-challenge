@@ -109,7 +109,9 @@ function App() {
           </div>
           <div className="space-y-2">
             <p className="pb-2 text-5xl font-semibold tracking-[-0.02em] text-[#283c4e]">
-              {pages.find((page) => page.key === activePage)?.label}
+              {activePage === 'buttons'
+                ? 'Buttons!'
+                : pages.find((page) => page.key === activePage)?.label}
             </p>
             <p className="text-base text-[#a4a7ae]">
               {activePage === 'buttons' &&
