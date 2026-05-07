@@ -2,7 +2,40 @@ import { Button } from './components/Button'
 import { SelectablePill } from './components/SelectablePill'
 import { SymptomCard } from './components/SymptomCard'
 import IsabelDrawing from './assets/isabel-drawing.png'
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
+
+function useTypewriterHeading(fullText: string) {
+  const [typed, setTyped] = useState('')
+
+  useLayoutEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+
+    if (prefersReducedMotion || fullText.length === 0) {
+      setTyped(fullText)
+      return
+    }
+
+    setTyped(fullText.slice(0, 1))
+    let index = 1
+    const stepMs = 52
+    const id = window.setInterval(() => {
+      index += 1
+      setTyped(fullText.slice(0, index))
+      if (index >= fullText.length) {
+        window.clearInterval(id)
+      }
+    }, stepMs)
+
+    return () => window.clearInterval(id)
+  }, [fullText])
+
+  const caretVisible =
+    fullText.length > 0 && typed.length < fullText.length
+
+  return { typed, caretVisible }
+}
 
 function ChevronRightIcon() {
   return (
@@ -91,6 +124,13 @@ function App() {
     })
   }
 
+  const heroTitle =
+    activePage === 'buttons'
+      ? 'Buttons!'
+      : (pages.find((page) => page.key === activePage)?.label ?? '')
+  const { typed: typedHeroTitle, caretVisible } =
+    useTypewriterHeading(heroTitle)
+
   return (
     <main className="min-h-svh p-10 bg-slate-100">
       <div className="max-w-none space-y-10">
@@ -108,10 +148,19 @@ function App() {
             </p>
           </div>
           <div className="space-y-2">
-            <p className="pb-2 text-5xl font-semibold tracking-[-0.02em] text-[#283c4e]">
-              {activePage === 'buttons'
-                ? 'Buttons!'
-                : pages.find((page) => page.key === activePage)?.label}
+            <p
+              className="pb-2 text-5xl font-semibold tracking-[-0.02em] text-[#283c4e]"
+              aria-label={heroTitle}
+            >
+              <span aria-hidden="true">
+                {typedHeroTitle}
+                {caretVisible ? (
+                  <span
+                    className="ml-[3px] inline-block h-[0.85em] w-[3px] translate-y-[0.08em] rounded-[1px] bg-current align-baseline opacity-90 motion-safe:animate-pulse"
+                    aria-hidden="true"
+                  />
+                ) : null}
+              </span>
             </p>
             <p className="text-base text-[#a4a7ae]">
               {activePage === 'buttons' &&
